@@ -7,7 +7,8 @@ export const Game = (props) => {
 
     return (
         <div className="main-content">
-            <h1>Hangmans Noose</h1>
+            <h2>Guess the Word</h2>
+            
         </div>
     )
 };
