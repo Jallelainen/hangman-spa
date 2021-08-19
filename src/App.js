@@ -20,7 +20,10 @@ function App() {
       <header className="App-header">
         <Header GameService />
           {
-            gameState === "new" ? <Start/> : gameState === "inProgress" ? <Game/> : gameState === "won" ? <Outcome gameState /> : <Outcome gameState />
+            gameState === "new" ? <Start setGameState={setGameState}/> 
+            : gameState === "inProgress" ? <Game setGameState={setGameState}/> 
+            : gameState === "won" ? <Outcome gameState={gameState} /> 
+            : <Outcome gameState={gameState} />
           }
         <Footer />
       </header>
