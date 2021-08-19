@@ -1,22 +1,23 @@
-import logo from './logo.svg';
+import * as React from 'react';
+import { useState, useEffect } from 'react';
+import GameService from './API/GameService';
 import './App.css';
+
+//----COMPONENTS----
+import Header from './Components/Header';
+import Footer from './Components/Footer';
+import Start from './Components/Start';
+import Game from  './Components/Game';
+import Outcome from './Components/Outcome';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <Header/>
+          
+
+        <Footer/>
       </header>
     </div>
   );
