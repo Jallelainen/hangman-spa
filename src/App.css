@@ -69,7 +69,10 @@ button:hover{
   color: var(--grey-1);
   background-color: var(--blue-5);
   width: 100vw;
+}
 
+.main-content > h4 {
+  letter-spacing: 00.5rem;
 }
 
 .footer{

@@ -1,12 +1,14 @@
 import axios from 'axios';
 
 class GameService {
-    async getWord(setWordObj){
+    async getWord(setWord, setHiddenWord, setHint){
         return await axios
             .get("https://random-words-api.vercel.app/word")
             .then((response) => {
                 console.log(response.data);
-                setWordObj(response.data[0]);
+                setHiddenWord("_".repeat(response.data[0].word.length));
+                setWord(response.data[0].word);
+                setHint(response.data[0].definition);
             })
             .catch((error) => {console.log(error)});
     }

@@ -3,19 +3,19 @@ import { useState, useEffect } from 'react';
 import GameService from '../API/GameService';
 
 export const Game = (props) => {
-    const [wordObj, setWordObj] = useState();
+    const [word, setWord] = useState();
+    const [hiddenWord, setHiddenWord] = useState();
+    const [hint, setHint] = useState();
 
     useEffect(() => {
-        GameService.getWord(setWordObj);
+        GameService.getWord(setWord, setHiddenWord, setHint);
     }, []);
-
-console.log(wordObj);
 
     return (
         <div className="main-content">
             <h2>Guess the Word</h2>
             {
-                wordObj? <p>{wordObj.word}</p> : <h4>"Loading..."</h4>
+                hiddenWord? <h4>{hiddenWord}</h4> : <h3>Loading...</h3>
             }
             <button className="neg-button" onClick={() => {props.setGameState("new")}}>Cancel Game</button>
         </div>
