@@ -1,24 +1,53 @@
+/* Colors */
+:root {
+  --black-0: #1a1c1f;
+  --grey-0: #282828;
+  --grey-1: #515151;
+  --grey-2: #7c7b7b;
+  --grey-3: #a8a7a7;
+  --grey-4: #dddddd;
+  --grey-5: #f4f4f4;
+  --yellow-0: #d9c07d;
+  --yellow-1: #dac58e;
+  --yellow-2: #dccb9e;
+  --yellow-3: #ddd0af;
+  --yellow-4: #ded5bf;
+  --yellow-5: #eeddcc;
+  --blue-0: #1b3455;
+  --blue-1: #3c5e7e;
+  --blue-2: #5d87a6;
+  --blue-3: #7eb1cf;
+  --blue-4: #c5ecff;
+  --blue-5: #f3fcff;
+  --good: #c3deb5;
+  --good-hover: #9cad92;
+  --lagom: #d9c07d;
+  --lagom-hover: #b09454;
+  --bad: #e25050;
+  --bad-hover: #b64344;
+}
+
+
 .App {
   text-align: center;
-  color: rgb(223, 223, 223);
+  color: var(--grey-4);
 
 }
 
 .App-header {
-  
-  background-color: #1a1c1f;
+  background-color: var(--black-0);
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);  min-height: 10vh;
   width: 100vw;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  align-items: left;
+  justify-content: left;
   font-size: calc(10px + 2vmin);
-  color: rgb(223, 223, 223);
+  color: var(--grey-4);
 }
 .main-content{
   min-height: 90vh;
-  background-color: #282c34;
+  background-color: var(--grey-2);
   width: 100vw;
 
 }
@@ -28,7 +57,7 @@
   left: 0;
   bottom: 0;
   width: 100vw;
-  background-color: #1a1c1f;
+  background-color: var(--black-0);
 }
 
 .footer > h3, p{
