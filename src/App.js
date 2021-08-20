@@ -14,13 +14,14 @@ import {Outcome} from './Components/Outcome';
 
 function App() {
   const [gameState, setGameState] = useState("new");
+  const [showInfo, setShowInfo] = useState(false);
 
   return (
     <div className="App">
       <header className="App-header">
         <Header GameService />
           {
-            gameState === "new" ? <Start setGameState={setGameState}/> 
+            gameState === "new" ? <Start setGameState={setGameState} setShowInfo={setShowInfo}/> 
             : gameState === "inProgress" ? <Game setGameState={setGameState}/> 
             : gameState === "won" ? <Outcome gameState={gameState} /> 
             : <Outcome gameState={gameState} />
