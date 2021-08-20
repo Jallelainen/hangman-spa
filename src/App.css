@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  color: rgb(223, 223, 223);
+
 }
 
 .App-logo {
@@ -21,7 +23,7 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: rgb(223, 223, 223);
 }
 .main-content{
   min-height: 90vh;
@@ -29,8 +31,14 @@
 
 .footer{
   position: sticky;
-  height: 5rem;
+  left: 0;
+  bottom: 0;
+  width: 100vw;
   background-color: #1a1c1f;
+}
+
+.footer > h3, p{
+  font-size: 1rem;
 }
 
 .App-link {
