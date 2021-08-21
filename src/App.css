@@ -120,3 +120,15 @@ input{
   background-color: var(--bad-hover);
 }
 
+.game-pic {
+  max-width: 12rem;
+  margin-left: auto;
+  margin-right:auto; 
+}
+
+.img-container {
+  min-height: 265px;
+  align-items: flex-end;
+    display: flex;
+}
+
