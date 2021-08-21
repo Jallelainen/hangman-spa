@@ -18,9 +18,9 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Header GameService />
+        <Header setGameState={setGameState} />
           {
-            gameState === "new" ? <Start setGameState={setGameState} setShowInfo={setShowInfo}/> 
+            gameState === "start" ? <Start setGameState={setGameState} setShowInfo={setShowInfo}/> 
             : gameState === "inProgress" ? <Game setGameState={setGameState}/> 
             : gameState === "won" ? <Outcome gameState={gameState} setGameState={setGameState} /> 
             : <Outcome gameState={gameState} setGameState={setGameState} />

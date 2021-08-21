@@ -64,7 +64,7 @@ export const Game = (props) => {
             <p><b>Used letters:</b> {guessedChars}</p>
             {round > 0 ? <p><b>Failed guesses:</b> {round} </p> : <div></div>}
             <input id="guess-input" placeholder="Enter you guess here..." type="text" onChange={(e) => handleInput(e.target.value)}/>
-            <button className="neg-button" onClick={() => {props.setGameState("new")}}>Cancel Game</button>
+            <button className="neg-button" onClick={() => {props.setGameState("start")}}>Cancel Game</button>
         </div>
     )
 };

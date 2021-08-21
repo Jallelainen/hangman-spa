@@ -6,8 +6,8 @@ export const Start = (props) => {
 
     return (
         <div className="main-content">
-            <h1>Hangmans Noose</h1>
-            <h2>Start a new game?</h2>
+            <h2>Hangmans Noose</h2>
+            <h3>Start a new game?</h3>
             <button className="pos-button" onClick={() => props.setGameState("inProgress")}>Generate new Word</button>
             <button onClick={() => props.setShowInfo(true)}>How to Play?</button>
         </div>
