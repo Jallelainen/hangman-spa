@@ -32,10 +32,15 @@ export const Game = (props) => {
                 /* This checks if the guess was added to the hidden word. It also checks if the guess already has been made, if not, the guess will be saved in an array */
                 if (updated.toUpperCase() === hiddenWord.toUpperCase()) {
                     
-                    if(!guessedChars.includes(guess) && !word.toUpperCase().includes(guess.toUpperCase())){
+                    if(!guessedChars.includes(guess)){
+                        setGuessedChars(guessedChars.concat(guess));
+                        rounds++;
+                    }else if(!word.toUpperCase().includes(guess.toUpperCase())){
                         setGuessedChars(guessedChars.concat(guess));
                         rounds++;
                     }
+
+
                 }else if (updated.toUpperCase() === word.toUpperCase()) { /* If the guess wasn't added to the hidden word, it checks if the hidden word is  */
                 props.setGameState("won")
             }
@@ -62,7 +67,7 @@ export const Game = (props) => {
             </div>
             {hiddenWord? <h4>{hiddenWord}</h4> : <h3>Loading...</h3>}
             <p><b>Used letters:</b> {guessedChars}</p>
-            {round > 0 ? <p><b>Failed guesses:</b> {round} </p> : <div></div>}
+            {round > 0 && (<p><b>Failed guesses:</b> {round} </p>)}
             <input id="guess-input" placeholder="Enter you guess here..." type="text" onChange={(e) => handleInput(e.target.value)}/>
             <button className="neg-button" onClick={() => {props.setGameState("start")}}>Cancel Game</button>
             {round > 6 ? <a id="hint" onClick={() => alert(hint)}>Hint?</a> : <div></div>}

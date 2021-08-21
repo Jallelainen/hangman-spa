@@ -14,14 +14,13 @@ import {History} from './Components/History';
 
 function App() {
   const [gameState, setGameState] = useState("start");
-  const [showInfo, setShowInfo] = useState(false);
 
   return (
     <div className="App">
       <header className="App-header">
         <Header setGameState={setGameState} />
           {
-            gameState === "start" ? <Start setGameState={setGameState} setShowInfo={setShowInfo}/> 
+            gameState === "start" ? <Start setGameState={setGameState}/> 
             : gameState === "inProgress" ? <Game setGameState={setGameState}/> 
             : gameState === "history" ? <History setGameState={setGameState}/> 
             : gameState === "won" ? <Outcome gameState={gameState} setGameState={setGameState} /> 

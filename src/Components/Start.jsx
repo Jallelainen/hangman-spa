@@ -2,6 +2,8 @@ import * as React from 'react';
 
 export const Start = (props) => {
 
+    
+
     return (
         <div className="main-content">
             <h2>Hangmans Noose</h2>
