@@ -65,6 +65,7 @@ export const Game = (props) => {
             {round > 0 ? <p><b>Failed guesses:</b> {round} </p> : <div></div>}
             <input id="guess-input" placeholder="Enter you guess here..." type="text" onChange={(e) => handleInput(e.target.value)}/>
             <button className="neg-button" onClick={() => {props.setGameState("start")}}>Cancel Game</button>
+            {round > 6 ? <a id="hint" onClick={() => alert(hint)}>Hint?</a> : <div></div>}
         </div>
     )
 };
