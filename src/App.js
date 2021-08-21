@@ -8,6 +8,7 @@ import {Footer} from './Components/Footer';
 import {Start} from './Components/Start';
 import {Game} from  './Components/Game';
 import {Outcome} from './Components/Outcome';
+import {History} from './Components/History';
 
 
 
@@ -22,6 +23,7 @@ function App() {
           {
             gameState === "start" ? <Start setGameState={setGameState} setShowInfo={setShowInfo}/> 
             : gameState === "inProgress" ? <Game setGameState={setGameState}/> 
+            : gameState === "history" ? <History setGameState={setGameState}/> 
             : gameState === "won" ? <Outcome gameState={gameState} setGameState={setGameState} /> 
             : <Outcome gameState={gameState} setGameState={setGameState} />
           }

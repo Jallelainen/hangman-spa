@@ -92,7 +92,7 @@ ul {
   width: 100vw;
   display: flex;
   flex-direction: column;
-  font-size: calc(5px + 2vmin);
+  font-size: calc(3px + 2vmin);
   color: var(--yellow-0);
 }
 
@@ -100,6 +100,8 @@ ul {
   min-height: 90vh;
   color: var(--grey-1);
   background-color: var(--blue-5);
+  margin-left: auto;
+  margin-right:auto; 
   width: 100vw;
 }
 
@@ -163,4 +165,10 @@ ul {
 #li-title{
   text-decoration: none;
   color: var(--lagom)
+}
+
+#history{
+  max-width: 40vw;
+  margin-left: auto;
+  margin-right:auto; 
 }
