@@ -1,6 +1,4 @@
 import * as React from 'react';
-import { useState, useEffect } from 'react';
-import GameService from '../API/GameService';
 
 export const Start = (props) => {
 
