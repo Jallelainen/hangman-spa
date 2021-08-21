@@ -52,11 +52,13 @@ input{
   border-width: 0px;
   outline: none;
   min-width: 15rem;
+  min-height: 18px;
   margin: 0.5rem;
   padding: 0.5rem;
   padding-left: 1rem;
   padding-right: 1rem;
   box-shadow: 0 0.15rem 0.75rem var(--grey-2);
+  transform: translateY(-2px);
 }
 
 /* -----CLasses------ */

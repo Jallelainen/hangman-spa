@@ -4,7 +4,7 @@ export const Header = (props) => {
 
     return (
         <div className="App-header">
-            <h1>Hangmans Noose</h1>
+            <h1 onClick={}>Hangmans Noose</h1>
         </div>
     )
 };

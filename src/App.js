@@ -22,8 +22,8 @@ function App() {
           {
             gameState === "new" ? <Start setGameState={setGameState} setShowInfo={setShowInfo}/> 
             : gameState === "inProgress" ? <Game setGameState={setGameState}/> 
-            : gameState === "won" ? <Outcome gameState={gameState} /> 
-            : <Outcome gameState={gameState} />
+            : gameState === "won" ? <Outcome gameState={gameState} setGameState={setGameState} /> 
+            : <Outcome gameState={gameState} setGameState={setGameState} />
           }
         <Footer />
       </header>

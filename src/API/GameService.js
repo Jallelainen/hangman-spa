@@ -7,8 +7,7 @@ class GameService {
         return await axios
             .get("https://random-words-api.vercel.app/word")
             .then((response) => {
-                console.log(response.data);
-
+               
                 setHiddenWord("_".repeat(response.data[0].word.length));
                 setWord(response.data[0].word);
                 setHint(response.data[0].definition);
