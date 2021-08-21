@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import './App.css';
 
 //----COMPONENTS----
@@ -12,7 +12,7 @@ import {Outcome} from './Components/Outcome';
 
 
 function App() {
-  const [gameState, setGameState] = useState("new");
+  const [gameState, setGameState] = useState("start");
   const [showInfo, setShowInfo] = useState(false);
 
   return (

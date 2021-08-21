@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 export const Outcome = (props) => {
-    const [outcome, setOutcome] = useState(props.gameState);
+    const [outcome] = useState(props.gameState);
 
     return (
         <div className="main-content">
