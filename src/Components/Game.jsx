@@ -10,6 +10,11 @@ export const Game = (props) => {
     const [guessedChars, setGuessedChars] = useState([]);
     const [round, setRound] = useState(0);
 
+    let gameImage = "../Pics/hangman" + round +".png";
+    const textShadow = {
+        textShadow: "2px 2px 5px orangered",
+    }
+
     /* Fetch word */
     useEffect(() => {
         GameService.getWord(setWord, setHiddenWord, setHint);
@@ -22,48 +27,62 @@ export const Game = (props) => {
         if (word) {
             /* Checks if maximum amount of tries is achieved*/
             if (rounds < 9) {
-                /* Goes through each letter of the word and checks it against the guess */
-                for (let i = 0; i < word?.length; i++) {
-                    if (word[i].toUpperCase() === guess.toUpperCase()) {
-                        updated = setCharAt(updated, i, guess); //If it matches, a defined function inserts the guessed character into the right place in the hidden word
-                    }     
-                };
+                
+                updated = checkGuess(updated, guess);
                 
                 /* This checks if the guess was added to the hidden word. It also checks if the guess already has been made, if not, the guess will be saved in an array */
                 if (updated.toUpperCase() === hiddenWord.toUpperCase()) {
                     
-                    if(!guessedChars.includes(guess)){
-                        setGuessedChars(guessedChars.concat(guess));
-                        rounds++;
-                    }else if(!word.toUpperCase().includes(guess.toUpperCase())){
-                        setGuessedChars(guessedChars.concat(guess));
-                        rounds++;
-                    }
-
+                    rounds = highlightAlreadyGuessed(guess, rounds);
 
                 }else if (updated.toUpperCase() === word.toUpperCase()) { /* If the guess wasn't added to the hidden word, it checks if the hidden word is  */
-                props.setGameState("won")
+                    props.setGameState("won")
+                }
+            
+            }else{
+                /* If the round exceeds ten iterations, gamestate will be set to 'lost' */
+                props.setGameState("lost");
             }
-            
-            
-        }else{
-            /* If the round exceeds ten iterations, gamestate will be set to 'lost' */
-            props.setGameState("lost");
+        
+            /* Hooks are updated last since they take more time and cant keep up with loop-iterations, input field is also cleared */
+            setHiddenWord(updated.toUpperCase());
+            setRound(rounds);
+        
+            document.getElementById("guess-input").value = '';
         }
-        
-        /* Hooks are updated last since they take more time and cant keep up with loop-iterations, input field is also cleared */
-        setHiddenWord(updated.toUpperCase());
-        setRound(rounds);
-        
-        document.getElementById("guess-input").value = '';
-    }
+    };
+
+    const checkGuess = (updatedHidden, guess) => {
+        /* Goes through each letter of the word and checks it against the guess */
+        for (let i = 0; i < word?.length; i++) {
+            if (word[i].toUpperCase() === guess.toUpperCase()) {
+                /* if it matches, a defined function inserts the guessed character into the right place in the hidden word */
+                updatedHidden = setCharAt(updatedHidden, i, guess); 
+            }     
+        };
+
+        return updatedHidden;
+    };
+
+    const highlightAlreadyGuessed = (guess, rounds) => {
+        if(!guessedChars.includes(guess)){
+            setGuessedChars(guessedChars.concat(guess));
+            rounds++;
+
+        }else if(!word.toUpperCase().includes(guess.toUpperCase())){
+            setGuessedChars(guessedChars.concat(guess));
+            rounds++;
+
+        }
+
+        return rounds;
     };
 
     return (
         <div className="main-content">
             <h2>Guess the Word</h2>
             <div className="img-container">
-                {round > 0 ? <img className="game-pic" src={"../Pics/hangman" + round +".png"} alt="Hangmans noose picture"/> : <div className="game-pic"></div>}
+                {round > 0 ? <img className="game-pic" src={gameImage} alt="Hangmans noose picture"/> : <div className="game-pic"></div>}
             </div>
             {hiddenWord? <h4>{hiddenWord}</h4> : <h3>Loading...</h3>}
             <p><b>Used letters:</b> {guessedChars}</p>
