@@ -79,6 +79,7 @@ ul {
   padding: 0;
   overflow: hidden;
 }
+
 /* ---- CLasses ----- */
 .App {
   text-align: center;
@@ -152,6 +153,12 @@ ul {
   min-height: 265px;
   align-items: flex-end;
   display: flex;
+}
+
+.centered-width{
+  max-width: 35vw;
+  margin-left: auto;
+  margin-right:auto; 
 }
 
 /* ----- IDs ----- */

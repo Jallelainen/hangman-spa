@@ -4,7 +4,7 @@ export const History = (props) => {
 
     return (
         <div className="main-content" >
-            <div id="history">
+            <div className="centered-width">
                 <h2>The History of Hangmans Noose</h2>
                 <p>Though the origins of the game are unknown, a variant is mentioned in a book of
                     children's games assembled by Alice Gomme in 1894 called Birds, Beasts, and Fishes. 
