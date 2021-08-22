@@ -14,6 +14,7 @@ import {History} from './Components/History';
 
 function App() {
   const [gameState, setGameState] = useState("start");
+  const [word, setWord] = useState();
 
   return (
     <div className="App">
@@ -21,10 +22,10 @@ function App() {
         <Header setGameState={setGameState} />
           {
             gameState === "start" ? <Start setGameState={setGameState}/> 
-            : gameState === "inProgress" ? <Game setGameState={setGameState}/> 
+            : gameState === "inProgress" ? <Game setGameState={setGameState} setWord = {setWord}/> 
             : gameState === "history" ? <History setGameState={setGameState}/> 
-            : gameState === "won" ? <Outcome gameState={gameState} setGameState={setGameState} /> 
-            : <Outcome gameState={gameState} setGameState={setGameState} />
+            : gameState === "won" ? <Outcome gameState={gameState} setGameState={setGameState} word={word}/> 
+            : <Outcome gameState={gameState} setGameState={setGameState} word={word}/>
           }
         <Footer />
       </header>

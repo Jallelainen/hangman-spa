@@ -11,9 +11,7 @@ export const Game = (props) => {
     const [round, setRound] = useState(0);
 
     let gameImage = "../Pics/hangman" + round +".png";
-    const textShadow = {
-        textShadow: "2px 2px 5px orangered",
-    }
+    let errorMsg = "Error! You have already guessed this letter: "
 
     /* Fetch word */
     useEffect(() => {
@@ -30,18 +28,20 @@ export const Game = (props) => {
                 
                 updated = checkGuess(updated, guess);
                 
-                /* This checks if the guess was added to the hidden word. It also checks if the guess already has been made, if not, the guess will be saved in an array */
+                /* This checks if the guess is already made. If not, the guess will be saved */
                 if (updated.toUpperCase() === hiddenWord.toUpperCase()) {
                     
-                    rounds = highlightAlreadyGuessed(guess, rounds);
+                    rounds = handleAlreadyGuessed(guess, rounds);
 
-                }else if (updated.toUpperCase() === word.toUpperCase()) { /* If the guess wasn't added to the hidden word, it checks if the hidden word is  */
-                    props.setGameState("won")
+                }else if (updated.toUpperCase() === word.toUpperCase()) { /* If the guess wasn't already made, this checks if the updated hidden word matches the real word */
+                    props.setGameState("won");
+                    props.setWord(word);
                 }
             
             }else{
                 /* If the round exceeds ten iterations, gamestate will be set to 'lost' */
                 props.setGameState("lost");
+                props.setWord(word);
             }
         
             /* Hooks are updated last since they take more time and cant keep up with loop-iterations, input field is also cleared */
@@ -64,15 +64,13 @@ export const Game = (props) => {
         return updatedHidden;
     };
 
-    const highlightAlreadyGuessed = (guess, rounds) => {
-        if(!guessedChars.includes(guess)){
+    const handleAlreadyGuessed = (guess, rounds) => {
+        if(!guessedChars.includes(guess) && !word.toUpperCase().includes(guess.toUpperCase())){
             setGuessedChars(guessedChars.concat(guess));
             rounds++;
 
-        }else if(!word.toUpperCase().includes(guess.toUpperCase())){
-            setGuessedChars(guessedChars.concat(guess));
-            rounds++;
-
+        }else{
+            alert(errorMsg + guess.toUpperCase());
         }
 
         return rounds;
@@ -82,14 +80,14 @@ export const Game = (props) => {
         <div className="main-content">
             <h2>Guess the Word</h2>
             <div className="img-container">
-                {round > 0 ? <img className="game-pic" src={gameImage} alt="Hangmans noose picture"/> : <div className="game-pic"></div>}
+                {round > 0 ? <img className="game-pic" src={gameImage} alt="Hangmans noose"/> : <div className="game-pic"></div>}
             </div>
-            {hiddenWord? <h4>{hiddenWord}</h4> : <h3>Loading...</h3>}
-            <p><b>Used letters:</b> {guessedChars}</p>
+            {hiddenWord? <h4 id="hidden-word">{hiddenWord}</h4> : <h3>Loading...</h3>}
+            <p id="used-letters"><b>Used letters:</b> {guessedChars}</p>
             {round > 0 && (<p><b>Failed guesses:</b> {round} </p>)}
             <input id="guess-input" placeholder="Enter you guess here..." type="text" onChange={(e) => handleInput(e.target.value)}/>
             <button className="neg-button" onClick={() => {props.setGameState("start")}}>Cancel Game</button>
-            {round > 6 ? <a id="hint" onClick={() => alert(hint)}>Hint?</a> : <div></div>}
+            {round > 6 && (<button id="hint" onClick={() => alert(hint)}>Hint?</button>)}
         </div>
     )
 };
