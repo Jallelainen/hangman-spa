@@ -93,7 +93,7 @@ ul {
   width: 100vw;
   display: flex;
   flex-direction: column;
-  font-size: calc(3px + 2vmin);
+  font-size: calc(2px + 2vmin);
   color: var(--yellow-0);
 }
 
@@ -167,11 +167,13 @@ ul {
   text-align: left;
   margin: 0.5rem;
   margin-left: 2rem;
+  font-weight: 200;
 }
 
 #li-title{
   text-decoration: none;
-  color: var(--lagom)
+  color: var(--lagom);
+  transform: translateY(2px);
 }
 
 #history{

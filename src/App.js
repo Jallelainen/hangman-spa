@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useState } from 'react';
 import './App.css';
 
-//----COMPONENTS----
+/* ----COMPONENTS---- */
 import {Header} from './Components/Header';
 import {Footer} from './Components/Footer';
 import {Start} from './Components/Start';

@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { useState } from 'react';
-import howToPlay from '../'
 
 export const Start = (props) => {
     const [showInfo, setShowInfo] = useState(false);
